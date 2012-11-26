@@ -64,8 +64,8 @@ def import_test(modules):
 
 		try:
 			module = __import__(m)
-		except:
-			project_modules['notfound'].append(m)
+		except Excption as err:
+			project_modules['notfound'].append("%s (%s)" % (m,err))
 			continue
 	
 		try:
