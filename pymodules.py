@@ -64,7 +64,7 @@ def import_test(modules):
 
 		try:
 			module = __import__(m)
-		except Excption as err:
+		except Exception as err:
 			project_modules['notfound'].append("%s (%s)" % (m,err))
 			continue
 	
@@ -130,8 +130,8 @@ if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Find all python modules used in a project')
 	parser.add_argument('paths', metavar='PATH|FILE', type=str, nargs='+', 
 						help='path to project')
-	parser.add_argument('--verbose','-v', dest='verbose', action='store_true', default=False)
-	parser.add_argument('--import-test','-t', dest='importtest', action='store_true', default=False,
+	parser.add_argument('-v','--verbose', dest='verbose', action='store_true', default=False)
+	parser.add_argument('-t','--import-test', dest='importtest', action='store_true', default=False,
 						help='attempt to import each modules. Output will print version and path of each module')
 	parser.add_argument('--exclude-file', dest='exclude_file', type=str, action='append', default=[],
 						help='regex for filename to exclude.  Use multiple times for different regexes')
